@@ -2,8 +2,8 @@ import { McTable } from '../modules/mc_table'
 
 
 // テーブル取得
-const users       = McTable.use( { name: 'users'       } )
-const countries   = McTable.use( { name: 'countries'   } )
+const users     = McTable.use( { name: 'users'       } )
+const countries = McTable.use( { name: 'countries'   } )
 
 // ---------------------------------------------------------------------------------------------------------------------
 // SELECT * FROM users INNER JOIN countries ON users.country_id=countries.id

@@ -1,5 +1,4 @@
-import { McTable }   from '../modules/mc_table'
-import { countries } from '../config/db'
+import { McTable } from '../modules/mc_table'
 
 
 /**

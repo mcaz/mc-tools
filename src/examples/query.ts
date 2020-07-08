@@ -2,9 +2,7 @@ import { McTable } from '../modules/mc_table'
 
 
 // テーブル取得
-const users       = McTable.use( { name: 'users' } )
-const authorities = McTable.use( { name: 'authorities' } )
-const countries   = McTable.use( { name: 'countries' } )
+const users = McTable.use( { name: 'users' } )
 
 // ---------------------------------------------------------------------------------------------------------------------
 // SELECT * FROM users WHERE id=1

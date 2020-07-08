@@ -12,12 +12,10 @@
     "setup:clasp:project:create"      : "docker-compose exec gas clasp create --type sheets --title mc_tools --rootDir ./dist",
     "setup:create"                    : "run-s setup:common:clasp:config:delete setup:common:clasp:config:create setup:common:docker:up setup:common:clasp:login setup:clasp:project:create",
     "setup:clone"                     : "run-s setup:common:clasp:config:delete setup:common:clasp:config:create setup:common:docker:up setup:common:clasp:login setup:clasp:clone",
-
-    "docker:up"   : "docker-compose up -d --build",
-    "docker:down" : "docker-compose down",
-
-    "source:watch": "docker-compose exec gas yarn webpack --watch",
-    "source:push" : "docker-compose exec gas clasp push"
+    "docker:up"                       : "docker-compose up -d --build",
+    "docker:down"                     : "docker-compose down",
+    "source:watch"                    : "docker-compose exec gas yarn webpack --watch",
+    "source:push"                     : "docker-compose exec gas clasp push"
   },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.14",

@@ -4,7 +4,6 @@ import { McTable } from '../modules/mc_table'
 // テーブル取得
 const users       = McTable.use( { name: 'users'       } )
 const authorities = McTable.use( { name: 'authorities' } )
-const countries   = McTable.use( { name: 'countries'   } )
 
 // ---------------------------------------------------------------------------------------------------------------------
 // SELECT * FROM users CROSS JOIN authorities

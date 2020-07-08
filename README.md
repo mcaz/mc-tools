@@ -10,7 +10,7 @@ $ npm run setup:create
 
 ### 既存プロジェクト
 ```
-$ npm run setup:create
+$ npm run setup:clone
 ```
 
 #### コマンド内容
@@ -43,6 +43,29 @@ $ npm run source:watch
 ```
 $ npm run source:push
 ```
+___
+
+## Examples
+- [サンプル用テーブル作成](https://github.com/mcaz/mc-tools/blob/master/src/examples/create_tables.ts)
+  - [users](https://github.com/mcaz/mc-tools/blob/master/src/examples/create_users_table.ts)
+  - [countries](https://github.com/mcaz/mc-tools/blob/master/src/examples/create_countries_table.ts)
+  - [authorities](https://github.com/mcaz/mc-tools/blob/master/src/examples/create_authorities_table.ts)
+  - [itarator](https://github.com/mcaz/mc-tools/blob/master/src/examples/record_iterator.ts)
+- テーブル操作
+  - [query](https://github.com/mcaz/mc-tools/blob/master/src/examples/query.ts)
+  - [sub query](https://github.com/mcaz/mc-tools/blob/master/src/examples/sub_query.ts)
+  - [inner join](https://github.com/mcaz/mc-tools/blob/master/src/examples/inner_join.ts)
+  - [outer join](https://github.com/mcaz/mc-tools/blob/master/src/examples/outer_join.ts)
+  - [cross join](https://github.com/mcaz/mc-tools/blob/master/src/examples/cross_join.ts)
+  - [update](https://github.com/mcaz/mc-tools/blob/master/src/examples/update_record.ts)
+  - [transaction](https://github.com/mcaz/mc-tools/blob/master/src/examples/transaction.ts)
+- レコード操作
+  - [record](https://github.com/mcaz/mc-tools/blob/master/src/examples/query.ts)
+  - [namespace](https://github.com/mcaz/mc-tools/blob/master/src/examples/record_namespace.ts)
+  - [validator](https://github.com/mcaz/mc-tools/blob/master/src/examples/record_validation.ts)
+- SimpleTrigger
+  - [doGet](https://github.com/mcaz/mc-tools/blob/master/src/examples/simpletrigger_onget.ts)
+
 
 ___
 

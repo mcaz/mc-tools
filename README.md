@@ -72,7 +72,7 @@ ___
   - [namespace](https://github.com/mcaz/mc-tools/blob/master/src/examples/record_namespace.ts)
   - [validator](https://github.com/mcaz/mc-tools/blob/master/src/examples/record_validation.ts)
 - SimpleTrigger
-  - [doGet](https://github.com/mcaz/mc-tools/blob/master/src/examples/simpletrigger_onget.ts)
+  - [doGet](https://github.com/mcaz/mc-tools/blob/master/src/examples/simpletrigger_doget.ts)
 
 
 ___

@@ -14,11 +14,13 @@
     "setup:clone"                     : "run-s setup:common:clasp:config:delete setup:common:clasp:config:create setup:common:docker:up setup:common:clasp:login setup:clasp:clone",
     "docker:up"                       : "docker-compose up -d --build",
     "docker:down"                     : "docker-compose down",
-    "source:watch"                    : "docker-compose exec gas yarn webpack --watch",
-    "source:push"                     : "docker-compose exec gas clasp push"
+    "open:script"                     : "docker-compose exec gas clasp open",
+    "login"                           : "docker-compose exec gas clasp login --no-localhost",
+    "logout"                          : "docker-compose exec gas clasp logout",
+    "watch"                           : "docker-compose exec gas yarn webpack --watch",
+    "push"                            : "docker-compose exec gas clasp push"
   },
   "devDependencies": {
-    "@types/google-apps-script": "^1.0.14",
     "gas-webpack-plugin": "^1.0.3",
     "npm-run-all": "^4.1.5",
     "ts-loader": "^7.0.5",

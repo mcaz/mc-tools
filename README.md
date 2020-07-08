@@ -24,25 +24,33 @@ ___
 
 ## コマンド
 
-### docker起動
+### docker起動・終了
 ```
 $ npm run docker:up
+$ npm run docker:down
 ```
 
-### docker終了
+### googleログイン・ログアウト
 ```
-$ npm run docker:down
+$ npm run login
+$ npm run logout
 ```
 
 ### 監視・ビルド
 ```
-$ npm run source:watch
+$ npm run watch
 ```
 
 ### スクリプトプッシュ
 ```
-$ npm run source:push
+$ npm run push
 ```
+
+### スクリプトオープン
+```
+$ npm run open
+```
+
 ___
 
 ## Examples

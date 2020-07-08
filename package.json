@@ -1,0 +1,34 @@
+{
+  "name": "qiita_gas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "setup:common:clasp:config:delete": "rm -f .clasprc.json .clasp.json",
+    "setup:common:clasp:config:create": "touch .clasprc.json",
+    "setup:common:docker:up"          : "npm run docker:up",
+    "setup:common:clasp:login"        : "docker-compose exec gas clasp login --no-localhost",
+    "setup:clasp:clone"               : "docker-compose exec gas clasp clone --rootDir ./src",
+    "setup:clasp:project:create"      : "docker-compose exec gas clasp create --type sheets --title mc_tools --rootDir ./dist",
+    "setup:create"                    : "run-s setup:common:clasp:config:delete setup:common:clasp:config:create setup:common:docker:up setup:common:clasp:login setup:clasp:project:create",
+    "setup:clone"                     : "run-s setup:common:clasp:config:delete setup:common:clasp:config:create setup:common:docker:up setup:common:clasp:login setup:clasp:clone",
+
+    "docker:up"   : "docker-compose up -d --build",
+    "docker:down" : "docker-compose down",
+
+    "source:watch": "docker-compose exec gas yarn webpack --watch",
+    "source:push" : "docker-compose exec gas clasp push"
+  },
+  "devDependencies": {
+    "@types/google-apps-script": "^1.0.14",
+    "gas-webpack-plugin": "^1.0.3",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^7.0.5",
+    "ts-polyfill": "^3.8.2",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {}
+}
+

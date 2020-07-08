@@ -4,12 +4,13 @@ import { McTable } from '../modules/mc_table'
 // テーブル取得
 const users       = McTable.use( { name: 'users'       } )
 const authorities = McTable.use( { name: 'authorities' } )
+const countries   = McTable.use( { name: 'countries'   } )
 
 // ---------------------------------------------------------------------------------------------------------------------
 // SELECT * FROM users LEFT OUTER JOIN authorities ON users.auth_id=authorities.id
 // ---------------------------------------------------------------------------------------------------------------------
 
-var result = users.leftOuterJoin('auth_id', authorities, 'id')
+var result = users.leftOuterJoin( 'auth_id', authorities, 'id' )
 
 Logger.log( result.hashes() )
 // [
@@ -57,6 +58,61 @@ Logger.log( result.hashes() )
 //         "users.auth_id"   : 3,
 //         "authorities.id"  : 3,
 //         "authorities.auth": "viewer",
+//     }
+// ]
+
+
+
+var result = users.leftOuterJoin( 'auth_id', authorities, 'id' ).leftOuterJoin( 'users.country_id', countries, 'id' )
+
+// [
+//     {
+//         "users.id"         : 1,
+//         "users.name"       : "John",
+//         "users.mail"       : "john@_gmail.com",
+//         "authorities.auth" : "admin",
+//         "users.country_id" : "USA",
+//         "users.auth_id"    : 1,
+//         "authorities.id"   : 1,
+//         "countries.id"     : "USA",
+//         "countries.name_en": "UNITED STATES",
+//         "countries.name_ja": "アメリカ合衆国(米国)",
+//     },
+//     {
+//         "users.id"         : 2,
+//         "users.name"       : "Dick",
+//         "users.country_id" : "USA",
+//         "users.mail"       : "dick@_gmail.com",
+//         "users.auth_id"    : 1,
+//         "authorities.id"   : 1,
+//         "authorities.auth" : "admin",
+//         "countries.id"     : "USA",
+//         "countries.name_ja": "アメリカ合衆国(米国)",
+//         "countries.name_en": "UNITED STATES",
+//     },
+//     {
+//         "users.id"         : 3,
+//         "users.name"       : "Emma",
+//         "users.mail"       : "emma@gmail.com",
+//         "users.country_id" : "USA",
+//         "users.auth_id"    : 1,
+//         "authorities.id"   : 1,
+//         "authorities.auth" : "admin",
+//         "countries.id"     : "USA",
+//         "countries.name_en": "UNITED STATES",
+//         "countries.name_ja": "アメリカ合衆国(米国)",
+//     },
+//     {
+//         "users.id"         : 4.0,
+//         "users.name"       : "James",
+//         "users.mail"       : "james@_gmail.com",
+//         "users.auth_id"    : 3,
+//         "users.country_id" : "USA",
+//         "authorities.id"   : 3,
+//         "authorities.auth" : "viewer",
+//         "countries.id"     : "USA",
+//         "countries.name_en": "UNITED STATES",
+//         "countries.name_ja": "アメリカ合衆国(米国)",
 //     }
 // ]
 

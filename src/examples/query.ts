@@ -56,8 +56,20 @@ var result: any = users.find( { id: [ 1, 2 ] } )
 
 Logger.log( result.hashes() )
 // [
-//   {auth_id=1.0, mail=foo@_gmail.com, id=1.0, name=John, country_id=USA},
-//   {country_id=USA, id=2.0, auth_id=1.0, name=Dick, mail=dick@_gmail.com}
+//     {
+//         id=1.0,
+//         mail=foo@_gmail.com,
+//         country_id=USA
+//         name=John,
+//         auth_id=1.0,
+//     },
+//     {
+//         id=2.0,
+//         name=Dick,
+//         mail=dick@_gmail.com
+//         country_id=USA,
+//         auth_id=1.0,
+//     }
 // ]
 
 
@@ -69,7 +81,13 @@ result = users.find( { id: [ 1, 2 ], name: 'John' } )
 
 Logger.log( result.hashes() )
 // [
-//   {mail=foo@_gmail.com, name=John, country_id=USA, id=1.0, auth_id=1.0}
+//     {
+//         id=1.0,
+//         name=John,
+//         mail=foo@_gmail.com,
+//         country_id=USA,
+//         auth_id=1.0
+//     }
 // ]
 
 
@@ -77,11 +95,16 @@ Logger.log( result.hashes() )
 // SELECT id, name FROM users WHERE id IN(1, 2) AND name="John"
 // ---------------------------------------------------------------------------------------------------------------------
 
-result = users.find( { id: [ 1, 2 ], name: 'John' } ).select( [ 'id', 'name' ] )
+result = users
+    .find( { id: [ 1, 2 ], name: 'John' } )
+    .select( [ 'id', 'name' ] )
 
 Logger.log( result.hashes() )
 // [
-//   {name=John, id=1.0}
+//     {
+//         name=John,
+//         id=1.0
+//     }
 // ]
 
 
@@ -143,10 +166,34 @@ result = users.not( { name: 'Dick' } )
 
 Logger.log( result.hashes() )
 // [
-//   {country_id=USA, name=John, auth_id=1.0, mail=foo@_gmail.com, id=1.0},
-//   {mail=emma@gmail.com, auth_id=1.0, country_id=USA, id=3.0, name=Emma},
-//   {name=James, mail=james@_gmail.com, country_id=USA, id=4.0, auth_id=3.0},
-//   {id=5.0, mail=foo@gmail.com, name=pochi, country_id=JPN, auth_id=3.0}
+//     {
+//         id=1.0
+//         name=John,
+//         country_id=USA,
+//         mail=foo@_gmail.com,
+//         auth_id=1.0,
+//     },
+//     {
+//         id=3.0,
+//         name=Emma
+//         mail=emma@gmail.com,
+//         country_id=USA,
+//         auth_id=1.0,
+//     },
+//     {
+//         id=4.0,
+//         name=James,
+//         mail=james@_gmail.com,
+//         country_id=USA,
+//         auth_id=3.0
+//     },
+//     {
+//         id=5.0,
+//         name=pochi,
+//         mail=foo@gmail.com,
+//         country_id=JPN,
+//         auth_id=3.0
+//     }
 // ]
 
 
@@ -158,9 +205,27 @@ result = users.not( { name: [ 'Dick', 'John' ] } )
 
 Logger.log( result.hashes() )
 // [
-//   {id=3.0, country_id=USA, name=Emma, auth_id=1.0, mail=emma@gmail.com},
-//   {mail=james@_gmail.com, name=James, country_id=USA, auth_id=3.0, id=4.0},
-//   {auth_id=3.0, id=5.0, mail=foo@gmail.com, name=pochi, country_id=JPN}
+//     {
+//         id=3.0,
+//         name=Emma,
+//         country_id=USA,
+//         mail=emma@gmail.com
+//         auth_id=1.0,
+//     },
+//     {
+//         id=4.0
+//         name=James,
+//         mail=james@_gmail.com,
+//         country_id=USA,
+//         auth_id=3.0,
+//     },
+//     {
+//         id=5.0,
+//         name=pochi,
+//         mail=foo@gmail.com,
+//         country_id=JPN
+//         auth_id=3.0,
+//     }
 // ]
 
 
@@ -172,11 +237,41 @@ result = users.not( { name: 'Dick', id: 1 } )
 
 Logger.log( result.hashes() )
 // [
-//   {auth_id=1.0, id=1.0, country_id=USA, name=John, mail=foo@_gmail.com},
-//   {mail=dick@_gmail.com, auth_id=1.0, id=2.0, country_id=USA, name=Dick},
-//   {country_id=USA, mail=emma@gmail.com, auth_id=1.0, name=Emma, id=3.0},
-//   {country_id=USA, mail=james@_gmail.com, name=James, id=4.0, auth_id=3.0},
-//   {name=pochi, id=5.0, country_id=JPN, auth_id=3.0, mail=foo@gmail.com}
+//     {
+//         id=1.0,
+//         name=John,
+//         country_id=USA,
+//         mail=foo@_gmail.com
+//         auth_id=1.0,
+//     },
+//     {
+//         id=2.0,
+//         name=Dick
+//         mail=dick@_gmail.com,
+//         country_id=USA,
+//         auth_id=1.0,
+//     },
+//     {
+//         id=3.0
+//         name=Emma,
+//         country_id=USA,
+//         mail=emma@gmail.com,
+//         auth_id=1.0,
+//     },
+//     {
+//         id=4.0,
+//         name=James,
+//         country_id=USA,
+//         mail=james@_gmail.com,
+//         auth_id=3.0
+//     },
+//     {
+//         id=5.0,
+//         name=pochi,
+//         country_id=JPN,
+//         mail=foo@gmail.com
+//         auth_id=3.0,
+//     }
 // ]
 
 
@@ -188,9 +283,15 @@ result = users.find( { id: [ 1, 2, 3, 4 ] } ).not( { id: 1 } ).select( [ 'auth_i
 
 Logger.log( result.hashes() )
 // [
-//   {auth_id=1.0},
-//   {auth_id=1.0},
-//   {auth_id=3.0}
+//     {
+//         auth_id=1.0
+//     },
+//     {
+//         auth_id=1.0
+//     },
+//     {
+//         auth_id=3.0
+//     }
 // ]
 
 
@@ -202,11 +303,41 @@ result = users.orderByAsc( 'id' )
 
 Logger.log( result.hashes() )
 // [
-//   {name=John, mail=foo@_gmail.com, id=1.0, country_id=USA, auth_id=1.0},
-//   {id=2.0, auth_id=1.0, country_id=USA, mail=dick@_gmail.com, name=Dick},
-//   {auth_id=1.0, country_id=USA, mail=emma@gmail.com, name=Emma, id=3.0},
-//   {auth_id=3.0, id=4.0, country_id=USA, name=James, mail=james@_gmail.com},
-//   {country_id=JPN, mail=foo@gmail.com, name=pochi, auth_id=3.0, id=5.0}
+//     {
+//         id=1.0,
+//         name=John,
+//         country_id=USA,
+//         mail=foo@_gmail.com,
+//         auth_id=1.0
+//     },
+//     {
+//         id=2.0,
+//         name=Dick
+//         country_id=USA,
+//         mail=dick@_gmail.com,
+//         auth_id=1.0,
+//     },
+//     {
+//         id=3.0
+//         name=Emma,
+//         country_id=USA,
+//         mail=emma@gmail.com,
+//         auth_id=1.0,
+//     },
+//     {
+//         id=4.0,
+//         name=James,
+//         country_id=USA,
+//         mail=james@_gmail.com
+//         auth_id=3.0,
+//     },
+//     {
+//         id=5.0
+//         name=pochi,
+//         country_id=JPN,
+//         mail=foo@gmail.com,
+//         auth_id=3.0,
+//     }
 // ]
 
 
@@ -218,9 +349,39 @@ result = users.orderByDesc( 'id' )
 
 Logger.log( result.hashes() )
 // [
-//   {mail=foo@gmail.com, id=5.0, name=pochi, auth_id=3.0, country_id=JPN},
-//   {name=James, id=4.0, mail=james@_gmail.com, auth_id=3.0, country_id=USA},
-//   {name=Emma, auth_id=1.0, id=3.0, country_id=USA, mail=emma@gmail.com},
-//   {mail=dick@_gmail.com, name=Dick, id=2.0, country_id=USA, auth_id=1.0},
-//   {mail=foo@_gmail.com, country_id=USA, auth_id=1.0, id=1.0, name=John}
+//     {
+//         id=5.0,
+//         name=pochi,
+//         mail=foo@gmail.com,
+//         country_id=JPN
+//         auth_id=3.0,
+//     },
+//     {
+//         id=4.0,
+//         name=James,
+//         mail=james@_gmail.com,
+//         country_id=USA
+//         auth_id=3.0,
+//     },
+//     {
+//         id=3.0,
+//         name=Emma,
+//         country_id=USA,
+//         mail=emma@gmail.com
+//         auth_id=1.0,
+//     },
+//     {
+//         id=2.0,
+//         name=Dick,
+//         country_id=USA,
+//         mail=dick@_gmail.com,
+//         auth_id=1.0
+//     },
+//     {
+//         id=1.0,
+//         name=John
+//         country_id=USA,
+//         mail=foo@_gmail.com,
+//         auth_id=1.0,
+//     }
 // ]
